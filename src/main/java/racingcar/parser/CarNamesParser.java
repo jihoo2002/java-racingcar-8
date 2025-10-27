@@ -17,7 +17,7 @@ public class CarNamesParser {
     }
 
     private static void throwIfCarNameEmpty(String car) {
-        if (car.isEmpty()) {
+        if (car == null || car.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
         }
     }
