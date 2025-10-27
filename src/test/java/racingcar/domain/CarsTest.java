@@ -6,6 +6,7 @@ import racingcar.util.ErrorMessage;
 
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
@@ -15,9 +16,9 @@ class CarsTest {
     void 자동차_이름_중복_검증() {
         List<String> names = List.of("car1", "car2", "car1");
 
-        IllegalStateException exception = assertThrows(IllegalStateException.class,
-                () -> new Cars(names));
-        assertEquals(ErrorMessage.DUPLICATE_CAR_NAME.getMessage(), exception.getMessage());
+        assertThatThrownBy(() -> new Cars(names))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
     }
 
     @Test

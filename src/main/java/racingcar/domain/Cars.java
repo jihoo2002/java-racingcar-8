@@ -30,7 +30,7 @@ public class Cars {
     private void validateDuplicateNames(List<String> carNames) {
         long distinctCount = carNames.stream().distinct().count();
         if (distinctCount != carNames.size()) {
-            throw new IllegalStateException(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
         }
     }
 
@@ -38,6 +38,6 @@ public class Cars {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElseThrow(() -> new IllegalStateException(ErrorMessage.NO_CAR_IN_RACE.getMessage()));
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.NO_CAR_IN_RACE.getMessage()));
     }
 }
