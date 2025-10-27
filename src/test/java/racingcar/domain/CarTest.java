@@ -64,6 +64,6 @@ class CarTest {
         Car car = new Car("car");
         car.move(randomNumber);
 
-        assertThat(car.getPosition()).isZero();
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }
