@@ -10,6 +10,7 @@ public class Car {
     private int position = 0;
 
     public Car(String name) {
+        throwIfCarNameNull(name);
         throwIfCarNameTooLong(name);
         this.carName = name;
     }
@@ -26,6 +27,12 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    private void throwIfCarNameNull(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
+        }
     }
 
     private void throwIfCarNameTooLong(String name) {
