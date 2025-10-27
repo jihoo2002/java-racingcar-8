@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
@@ -34,6 +35,8 @@ public class RacingGameController {
 
         runRace(raceRounds, racingGame, cars);
         ResultView.printWinners(toCarStatusDto(cars.getWinners()));
+
+        InputView.close();
     }
 
     private void runRace(int raceRounds, RacingGame racingGame, Cars cars) {
